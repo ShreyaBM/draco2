@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Schema Description &#8212; Draco</title>
     
-  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
     
   <link rel="stylesheet"
@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
 
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -261,28 +261,24 @@
 <p>The schema describes what we know about the dataset and the fields in the data. Besides general statistics about the whole dataset, the schema also has information about field types and field statistics.</p>
 <div class="section" id="dataset-properties">
 <h2>Dataset Properties<a class="headerlink" href="#dataset-properties" title="Permalink to this headline">¶</a></h2>
-<dl class="simple myst">
-<dt><code class="docutils literal notranslate"><span class="pre">numberRows</span></code></dt><dd><p>The number of rows in the dataset. Draco can use this fact about the data to recommend chart design that scale to the size of the dataset.</p>
-</dd>
-</dl>
+<p><code class="docutils literal notranslate"><span class="pre">numberRows</span></code>
+: The number of rows in the dataset. Draco can use this fact about the data to recommend chart design that scale to the size of the dataset.</p>
 </div>
 <div class="section" id="field-properties">
 <h2>Field Properties<a class="headerlink" href="#field-properties" title="Permalink to this headline">¶</a></h2>
 <p>Draco can use information about the field type and field statistics. Each field property is associated with a field. The facts therefore have the form of e.g. <code class="docutils literal notranslate"><span class="pre">fact(dataType,foo,number).</span></code> (read as <em>the type of the foo field is number</em>). For each field, there should be a fact <code class="docutils literal notranslate"><span class="pre">field</span></code> that tells Draco that the field exists (e.g. <code class="docutils literal notranslate"><span class="pre">fact(field,foo).</span></code>).</p>
-<dl class="simple myst">
-<dt><code class="docutils literal notranslate"><span class="pre">dataType</span></code></dt><dd><p>The type of the data in the column for this field. One of <code class="docutils literal notranslate"><span class="pre">number</span></code>, <code class="docutils literal notranslate"><span class="pre">string</span></code>, <code class="docutils literal notranslate"><span class="pre">boolean</span></code>, or <code class="docutils literal notranslate"><span class="pre">datetime</span></code>.</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">unique</span></code></dt><dd><p>The number of unique values.</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">min</span></code></dt><dd><p>The minimum value. Only used for numbers.</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">max</span></code></dt><dd><p>The maximum value. Only used for numbers.</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">std</span></code></dt><dd><p>The standard deviation. Only used for numbers.</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">freq</span></code></dt><dd><p>The frequency of the most common value. Only used for strings.</p>
-</dd>
-</dl>
+<p><code class="docutils literal notranslate"><span class="pre">dataType</span></code>
+: The type of the data in the column for this field. One of <code class="docutils literal notranslate"><span class="pre">number</span></code>, <code class="docutils literal notranslate"><span class="pre">string</span></code>, <code class="docutils literal notranslate"><span class="pre">boolean</span></code>, or <code class="docutils literal notranslate"><span class="pre">datetime</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">unique</span></code>
+: The number of unique values.</p>
+<p><code class="docutils literal notranslate"><span class="pre">min</span></code>
+: The minimum value. Only used for numbers.</p>
+<p><code class="docutils literal notranslate"><span class="pre">max</span></code>
+: The maximum value. Only used for numbers.</p>
+<p><code class="docutils literal notranslate"><span class="pre">std</span></code>
+: The standard deviation. Only used for numbers.</p>
+<p><code class="docutils literal notranslate"><span class="pre">freq</span></code>
+: The frequency of the most common value. Only used for strings.</p>
 </div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
@@ -357,7 +353,7 @@
     </div>
 
     
-  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
 
 
     
