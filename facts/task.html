@@ -55,7 +55,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Overview" href="../api/intro.html" />
-    <link rel="prev" title="Schema Description" href="schema.html" />
+    <link rel="prev" title="Mark Description" href="mark.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -108,6 +108,16 @@
    Schema Description
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="view.html">
+   View Description
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="mark.html">
+   Mark Description
+  </a>
+ </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Task Description
@@ -128,6 +138,11 @@
  <li class="toctree-l1">
   <a class="reference internal" href="../api/schema.html">
    Read Data and Generate the Schema
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../api/programs.html">
+   Programs
   </a>
  </li>
 </ul>
@@ -256,12 +271,12 @@
 <p>The task that the user tries to complete when looking at a visualization helps Draco find the most appropriate visualization.</p>
 <div class="section" id="task-properties">
 <h2>Task Properties<a class="headerlink" href="#task-properties" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">taskType</span></code>
+<p><code class="docutils literal notranslate"><span class="pre">task</span></code>
 : Type task type. Can be one of <code class="docutils literal notranslate"><span class="pre">value</span></code> and <code class="docutils literal notranslate"><span class="pre">summary</span></code>.</p>
 </div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-prolog notranslate"><div class="highlight"><pre><span></span><span class="nf">fact</span><span class="p">(</span><span class="s s-Atom">taskType</span><span class="p">,</span><span class="s s-Atom">value</span><span class="p">).</span>
+<div class="highlight-prolog notranslate"><div class="highlight"><pre><span></span><span class="nf">attribute</span><span class="p">(</span><span class="s s-Atom">task</span><span class="p">,</span><span class="s s-Atom">root</span><span class="p">,</span><span class="s s-Atom">value</span><span class="p">).</span>
 </pre></div>
 </div>
 </div>
@@ -295,7 +310,7 @@
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="schema.html" title="previous page">Schema Description</a>
+    <a class='left-prev' id="prev-link" href="mark.html" title="previous page">Mark Description</a>
     <a class='right-next' id="next-link" href="../api/intro.html" title="next page">Overview</a>
 
     </div>

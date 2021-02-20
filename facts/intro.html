@@ -109,6 +109,16 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="view.html">
+   View Description
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="mark.html">
+   Mark Description
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="task.html">
    Task Description
   </a>
@@ -128,6 +138,11 @@
  <li class="toctree-l1">
   <a class="reference internal" href="../api/schema.html">
    Read Data and Generate the Schema
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../api/programs.html">
+   Programs
   </a>
  </li>
 </ul>
@@ -239,7 +254,9 @@
 <p class="admonition-title">Note</p>
 <p>You could design your own description language and use it with Draco or extend the existing language we use here. If you add new information, Draco will not immediately use the new facts until you also add constraints over the facts.</p>
 </div>
-<p>The constraint solver Clingo reasons about the facts that describe a visualization. The specific format we use to provide facts to the solver is as a <em>function</em> of the name <code class="docutils literal notranslate"><span class="pre">fact</span></code>. For example, the number of rows in the dataset in this function form is <code class="docutils literal notranslate"><span class="pre">fact(numberRows,42).</span></code> (read as <em>the number of rows is 42</em>).</p>
+<p>The constraint solver Clingo reasons about the facts that describe a visualization. The specific format we use to provide facts to the solver is as a <em>function</em> of the name <code class="docutils literal notranslate"><span class="pre">property</span></code> or <code class="docutils literal notranslate"><span class="pre">attribute</span></code>.</p>
+<p>Properties describe what properties exist on an object. If a property has no parents, we use a special object <code class="docutils literal notranslate"><span class="pre">root</span></code>. For example, <code class="docutils literal notranslate"><span class="pre">property(view,root,v1).</span></code> says that there is a view v1 on the root.</p>
+<p>Attribute facts specify properties of objects. For example, the number of rows in the dataset in this function form is <code class="docutils literal notranslate"><span class="pre">attribute(number_rows,root,42).</span></code> (read as <em>the number of rows (on the root object) is 42</em>).</p>
 </div>
 
     <script type="text/x-thebe-config">

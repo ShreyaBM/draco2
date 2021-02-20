@@ -54,7 +54,7 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Bibliography" href="../bibliography.html" />
+    <link rel="next" title="Programs" href="programs.html" />
     <link rel="prev" title="Overview" href="intro.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -109,6 +109,16 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="../facts/view.html">
+   View Description
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../facts/mark.html">
+   Mark Description
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../facts/task.html">
    Task Description
   </a>
@@ -128,6 +138,11 @@
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Read Data and Generate the Schema
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="programs.html">
+   Programs
   </a>
  </li>
 </ul>
@@ -242,6 +257,25 @@
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
         
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#available-functions">
+   Available functions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#usage-example">
+   Usage Example
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
     </div>
 </div>
     <div id="main-content" class="row">
@@ -252,6 +286,55 @@
   <div class="section" id="read-data-and-generate-the-schema">
 <h1>Read Data and Generate the Schema<a class="headerlink" href="#read-data-and-generate-the-schema" title="Permalink to this headline">¶</a></h1>
 <p>Here, we will cover how to load data and use inferred statistics in Draco.</p>
+<div class="section" id="available-functions">
+<h2>Available functions<a class="headerlink" href="#available-functions" title="Permalink to this headline">¶</a></h2>
+<p>The main functions allow you to get the schema from a Pandas dataframe or a file. These functions return a schema as a dictionary, which you can encode as Answer Set Programming facts using our generic <cite>dict_to_facts</cite> encoder.</p>
+<dl class="py function">
+<dt id="draco.schema.schema_from_dataframe">
+<code class="sig-prename descclassname"><span class="pre">draco.schema.</span></code><code class="sig-name descname"><span class="pre">schema_from_dataframe</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">df</span></em>, <em class="sig-param"><span class="pre">parse_data_type=&lt;function</span> <span class="pre">dtype_to_field_type&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#draco.schema.schema_from_dataframe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read schema information from the given Pandas dataframe.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code>) – DataFrame to generate schema for.</p></li>
+<li><p><strong>parse_data_type</strong> – Function to parse data types.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>]</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A dictionary representing the schema.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="draco.schema.schema_from_file">
+<code class="sig-prename descclassname"><span class="pre">draco.schema.</span></code><code class="sig-name descname"><span class="pre">schema_from_file</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">file_path</span></em>, <em class="sig-param"><span class="pre">parse_data_type=&lt;function</span> <span class="pre">dtype_to_field_type&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#draco.schema.schema_from_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read schema information from the given CSV or JSON file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>file_path</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code>) – Path to CSV or JSON file.</p></li>
+<li><p><strong>parse_data_type</strong> – Function to parse data types.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If the file has an unsupported data type.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>]</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A dictionary representing the schema.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="usage-example">
+<h2>Usage Example<a class="headerlink" href="#usage-example" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">draco</span> <span class="kn">import</span> <span class="n">schema_from_dataframe</span><span class="p">,</span> <span class="n">dict_to_facts</span>
@@ -277,25 +360,33 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;numberRows&#39;: 1461,
- &#39;field&#39;: {&#39;date&#39;: {&#39;dataType&#39;: &#39;datetime&#39;, &#39;unique&#39;: 1461},
-  &#39;precipitation&#39;: {&#39;dataType&#39;: &#39;number&#39;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;number_rows&#39;: 1461,
+ &#39;field&#39;: [{&#39;__id__&#39;: &#39;date&#39;, &#39;data_type&#39;: &#39;datetime&#39;, &#39;unique&#39;: 1461},
+  {&#39;__id__&#39;: &#39;precipitation&#39;,
+   &#39;data_type&#39;: &#39;number&#39;,
    &#39;unique&#39;: 111,
    &#39;min&#39;: 0,
    &#39;max&#39;: 55,
    &#39;std&#39;: 6},
-  &#39;temp_max&#39;: {&#39;dataType&#39;: &#39;number&#39;,
+  {&#39;__id__&#39;: &#39;temp_max&#39;,
+   &#39;data_type&#39;: &#39;number&#39;,
    &#39;unique&#39;: 67,
    &#39;min&#39;: -1,
    &#39;max&#39;: 35,
    &#39;std&#39;: 7},
-  &#39;temp_min&#39;: {&#39;dataType&#39;: &#39;number&#39;,
+  {&#39;__id__&#39;: &#39;temp_min&#39;,
+   &#39;data_type&#39;: &#39;number&#39;,
    &#39;unique&#39;: 55,
    &#39;min&#39;: -7,
    &#39;max&#39;: 18,
    &#39;std&#39;: 5},
-  &#39;wind&#39;: {&#39;dataType&#39;: &#39;number&#39;, &#39;unique&#39;: 79, &#39;min&#39;: 0, &#39;max&#39;: 9, &#39;std&#39;: 1},
-  &#39;weather&#39;: {&#39;dataType&#39;: &#39;string&#39;, &#39;unique&#39;: 5, &#39;freq&#39;: 714}}}
+  {&#39;__id__&#39;: &#39;wind&#39;,
+   &#39;data_type&#39;: &#39;number&#39;,
+   &#39;unique&#39;: 79,
+   &#39;min&#39;: 0,
+   &#39;max&#39;: 9,
+   &#39;std&#39;: 1},
+  {&#39;__id__&#39;: &#39;weather&#39;, &#39;data_type&#39;: &#39;string&#39;, &#39;unique&#39;: 5, &#39;freq&#39;: 714}]}
 </pre></div>
 </div>
 </div>
@@ -309,39 +400,40 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;attribute(numberRows,root,1461).&#39;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;attribute(number_rows,root,1461).&#39;,
  &#39;property(field,root,date).&#39;,
- &#39;attribute(dataType,date,datetime).&#39;,
+ &#39;attribute(data_type,date,datetime).&#39;,
  &#39;attribute(unique,date,1461).&#39;,
  &#39;property(field,root,precipitation).&#39;,
- &#39;attribute(dataType,precipitation,number).&#39;,
+ &#39;attribute(data_type,precipitation,number).&#39;,
  &#39;attribute(unique,precipitation,111).&#39;,
  &#39;attribute(min,precipitation,0).&#39;,
  &#39;attribute(max,precipitation,55).&#39;,
  &#39;attribute(std,precipitation,6).&#39;,
  &#39;property(field,root,temp_max).&#39;,
- &#39;attribute(dataType,temp_max,number).&#39;,
+ &#39;attribute(data_type,temp_max,number).&#39;,
  &#39;attribute(unique,temp_max,67).&#39;,
  &#39;attribute(min,temp_max,-1).&#39;,
  &#39;attribute(max,temp_max,35).&#39;,
  &#39;attribute(std,temp_max,7).&#39;,
  &#39;property(field,root,temp_min).&#39;,
- &#39;attribute(dataType,temp_min,number).&#39;,
+ &#39;attribute(data_type,temp_min,number).&#39;,
  &#39;attribute(unique,temp_min,55).&#39;,
  &#39;attribute(min,temp_min,-7).&#39;,
  &#39;attribute(max,temp_min,18).&#39;,
  &#39;attribute(std,temp_min,5).&#39;,
  &#39;property(field,root,wind).&#39;,
- &#39;attribute(dataType,wind,number).&#39;,
+ &#39;attribute(data_type,wind,number).&#39;,
  &#39;attribute(unique,wind,79).&#39;,
  &#39;attribute(min,wind,0).&#39;,
  &#39;attribute(max,wind,9).&#39;,
  &#39;attribute(std,wind,1).&#39;,
  &#39;property(field,root,weather).&#39;,
- &#39;attribute(dataType,weather,string).&#39;,
+ &#39;attribute(data_type,weather,string).&#39;,
  &#39;attribute(unique,weather,5).&#39;,
  &#39;attribute(freq,weather,714).&#39;]
 </pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -376,7 +468,7 @@
     <div class='prev-next-bottom'>
         
     <a class='left-prev' id="prev-link" href="intro.html" title="previous page">Overview</a>
-    <a class='right-next' id="next-link" href="../bibliography.html" title="next page">Bibliography</a>
+    <a class='right-next' id="next-link" href="programs.html" title="next page">Programs</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
