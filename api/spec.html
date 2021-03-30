@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Programs &#8212; Draco</title>
+    <title>Specifications &#8212; Draco</title>
     
   <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -54,8 +54,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Bibliography" href="../bibliography.html" />
-    <link rel="prev" title="Fact Utils" href="facts.html" />
+    <link rel="next" title="Run" href="run.html" />
+    <link rel="prev" title="Read Data and Generate the Schema" href="schema.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -165,8 +165,8 @@
    Converting Satisfiable Models back into Views
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="spec.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Specifications
   </a>
  </li>
@@ -180,8 +180,8 @@
    Fact Utils
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="programs.html">
    Programs
   </a>
  </li>
@@ -237,9 +237,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/api/programs.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/api/spec.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -257,10 +257,10 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/cmudig/draco2/issues/new?title=Issue%20on%20page%20%2Fapi/programs.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/cmudig/draco2/issues/new?title=Issue%20on%20page%20%2Fapi/spec.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/cmudig/draco2/edit/main/docs/api/programs.md"><button
+        <a class="edit-button" href="https://github.com/cmudig/draco2/edit/main/docs/api/spec.ipynb"><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
@@ -275,6 +275,23 @@
 
             <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/cmudig/draco2/main?urlpath=lab/tree/docs/api/spec.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
         </div>
 
         <!-- Table of contents -->
@@ -287,8 +304,13 @@
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#options-for-each-program">
-   Options for Each Program
+  <a class="reference internal nav-link" href="#module-draco.spec">
+   Available functions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#usage-example">
+   Usage Example
   </a>
  </li>
 </ul>
@@ -303,68 +325,143 @@
         
               <div>
                 
-  <div class="section" id="programs">
-<h1>Programs<a class="headerlink" href="#programs" title="Permalink to this headline">¶</a></h1>
-<p>Draco exposes the following programs.</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">definitions</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">constraints</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">generate</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">hard</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">helpers</span></code></p></li>
-</ul>
-<p>Draco loads these programs from files.</p>
-<div class="section" id="options-for-each-program">
-<h2>Options for Each Program<a class="headerlink" href="#options-for-each-program" title="Permalink to this headline">¶</a></h2>
-<dl class="py data">
-<dt id="draco.programs">
-<code class="sig-prename descclassname"><span class="pre">draco.</span></code><code class="sig-name descname"><span class="pre">programs</span></code><a class="headerlink" href="#draco.programs" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<p>Each program has both the program as well as the program as a dictionary of blocks. Blocks allow you to pick and choose parts of a program and access documentation.</p>
-<dl class="py class">
-<dt id="draco.programs.Program">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">draco.programs.</span></code><code class="sig-name descname"><span class="pre">Program</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">program</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">blocks</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#draco.programs.Program" title="Permalink to this definition">¶</a></dt>
-<dd><p>Class for an Answer Set Programming (ASP) program.</p>
-<dl class="simple">
-<dt>Attributes:</dt><dd><dl class="field-list simple">
-<dt class="field-odd">program</dt>
-<dd class="field-odd"><p>The complete program.</p>
+  <div class="section" id="specifications">
+<h1>Specifications<a class="headerlink" href="#specifications" title="Permalink to this headline">¶</a></h1>
+<p>Draco can check whether a visualization specification is valid. If it isn’t valid, it can also compute what constrains are being violated. These methods check a specification against the standard set of constraints in Draco. If you define your own constraints, you can instead use the lower-level <a class="reference internal" href="run.html"><span class="doc std std-doc">Draco run API</span></a>.</p>
+<div class="section" id="module-draco.spec">
+<span id="available-functions"></span><h2>Available functions<a class="headerlink" href="#module-draco.spec" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="draco.spec.check_spec">
+<code class="sig-prename descclassname"><span class="pre">draco.spec.</span></code><code class="sig-name descname"><span class="pre">check_spec</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spec</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#draco.spec.check_spec" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks the spec against the hard constraints.</p>
+<p>Internally, Draco checks against the definitions, constraints, helpers,
+and hard constraints.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>spec</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Iterable</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]]) – The specification to check</p>
 </dd>
-<dt class="field-even">blocks</dt>
-<dd class="field-even"><p>The blocks in the program.</p>
-</dd>
-</dl>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></p>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="py attribute">
-<dt id="draco.asp_utils.Blocks">
-<code class="sig-prename descclassname"><span class="pre">draco.asp_utils.</span></code><code class="sig-name descname"><span class="pre">Blocks</span></code><a class="headerlink" href="#draco.asp_utils.Blocks" title="Permalink to this definition">¶</a></dt>
-<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>], <code class="xref py py-obj docutils literal notranslate"><span class="pre">Union</span></code>[<a class="reference internal" href="#draco.asp_utils.Block" title="draco.asp_utils.Block"><code class="xref py py-class docutils literal notranslate"><span class="pre">draco.asp_utils.Block</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]]</p>
-</dd></dl>
-
-<dl class="py class">
-<dt id="draco.asp_utils.Block">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">draco.asp_utils.</span></code><code class="sig-name descname"><span class="pre">Block</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">block_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">program</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#draco.asp_utils.Block" title="Permalink to this definition">¶</a></dt>
-<dd><p>Class for a code block.</p>
-<dl class="simple">
-<dt>Attributes:</dt><dd><dl class="field-list simple">
-<dt class="field-odd">block_type</dt>
-<dd class="field-odd"><p>The type of code block.</p>
-</dd>
-<dt class="field-even">description</dt>
-<dd class="field-even"><p>Short description of the code block.</p>
-</dd>
-<dt class="field-odd">program</dt>
-<dd class="field-odd"><p>The program in Answer Set Programming (ASP).</p>
-</dd>
-</dl>
+<dl class="py function">
+<dt id="draco.spec.get_violations">
+<code class="sig-prename descclassname"><span class="pre">draco.spec.</span></code><code class="sig-name descname"><span class="pre">get_violations</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spec</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#draco.spec.get_violations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the list of violations for a given specification.</p>
+<p>Internally, Draco checks against the definitions, constraints, helpers,
+and hard constraints.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>spec</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Iterable</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]]) – The specification top check</p>
 </dd>
 </dl>
 </dd></dl>
 
+</div>
+<div class="section" id="usage-example">
+<h2>Usage Example<a class="headerlink" href="#usage-example" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">draco</span> <span class="kn">import</span> <span class="n">check_spec</span><span class="p">,</span> <span class="n">get_violations</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">valid_spec</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">attribute(number_rows,root,100).</span>
+<span class="s2">property(field,root,f1).</span>
+<span class="s2">attribute((field,name),f1,temperature).</span>
+<span class="s2">attribute((field,type),f1number).</span>
+
+<span class="s2">property(mark,root,m1).</span>
+<span class="s2">attribute((mark,type),m1,tick).</span>
+<span class="s2">property(encoding,m1,e1).</span>
+<span class="s2">attribute((encoding,channel),e1,x).</span>
+<span class="s2">attribute((encoding,field),e1,temperature).</span>
+
+<span class="s2">property(scale,root,sx).</span>
+<span class="s2">attribute((scale,channel),sx,x).</span>
+<span class="s2">attribute((scale,type),sx,linear).</span>
+<span class="s2">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">check_spec</span><span class="p">(</span><span class="n">valid_spec</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">get_violations</span><span class="p">(</span><span class="n">valid_spec</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">invalid_spec</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">attribute(number_rows,root,100).</span>
+<span class="s2">property(field,root,f1).</span>
+<span class="s2">attribute((field,name),f1,temperature).</span>
+<span class="s2">attribute((field,type),f1number).</span>
+
+<span class="s2">property(mark,root,m1).</span>
+<span class="si">% i</span><span class="s2">nvalid mark</span>
+<span class="s2">attribute((mark,type),m1,invalid).</span>
+<span class="s2">property(encoding,m1,e1).</span>
+<span class="s2">attribute((encoding,channel),e1,x).</span>
+<span class="s2">attribute((encoding,field),e1,temperature).</span>
+
+<span class="s2">property(scale,root,sx).</span>
+<span class="s2">attribute((scale,channel),sx,x).</span>
+<span class="s2">attribute((scale,type),sx,linear).</span>
+<span class="s2">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">check_spec</span><span class="p">(</span><span class="n">invalid_spec</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">get_violations</span><span class="p">(</span><span class="n">invalid_spec</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;invalid_domain&#39;]
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 </div>
 
@@ -393,8 +490,8 @@
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="facts.html" title="previous page">Fact Utils</a>
-    <a class='right-next' id="next-link" href="../bibliography.html" title="next page">Bibliography</a>
+    <a class='left-prev' id="prev-link" href="schema.html" title="previous page">Read Data and Generate the Schema</a>
+    <a class='right-next' id="next-link" href="run.html" title="next page">Run</a>
 
         </div>
         

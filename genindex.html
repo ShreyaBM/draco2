@@ -26,7 +26,7 @@
 
     
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/sphinx-book-theme.37f24b989f4638ff9c27c22dc7559d4f.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.e7340bb3dbd8dde6db86f25597f54a1b.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
@@ -103,22 +103,37 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="facts/schema.html">
-   Schema Description
+   Data and Schema
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="facts/view.html">
-   View Description
+   Views
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="facts/mark.html">
-   Mark Description
+   Marks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="facts/encoding.html">
+   Encodings
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="facts/scale.html">
+   Scales
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="facts/task.html">
-   Task Description
+   Tasks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="facts/examples.html">
+   Example Charts
   </a>
  </li>
 </ul>
@@ -136,6 +151,31 @@
  <li class="toctree-l1">
   <a class="reference internal" href="api/schema.html">
    Read Data and Generate the Schema
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="api/schema.html#run-the-clingo-solver">
+   Run the Clingo Solver
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="api/schema.html#converting-satisfiable-models-back-into-views">
+   Converting Satisfiable Models back into Views
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="api/spec.html">
+   Specifications
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="api/run.html">
+   Run
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="api/facts.html">
+   Fact Utils
   </a>
  </li>
  <li class="toctree-l1">
@@ -231,8 +271,12 @@
 <h1 id="index">Index</h1>
 
 <div class="genindex-jumpbox">
- <a href="#B"><strong>B</strong></a>
+ <a href="#A"><strong>A</strong></a>
+ | <a href="#B"><strong>B</strong></a>
+ | <a href="#C"><strong>C</strong></a>
  | <a href="#D"><strong>D</strong></a>
+ | <a href="#F"><strong>F</strong></a>
+ | <a href="#G"><strong>G</strong></a>
  | <a href="#I"><strong>I</strong></a>
  | <a href="#M"><strong>M</strong></a>
  | <a href="#P"><strong>P</strong></a>
@@ -240,6 +284,18 @@
  | <a href="#S"><strong>S</strong></a>
  
 </div>
+<h2 id="A">A</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/intro.html#draco.answer_set_to_dict">answer_set_to_dict() (in module draco)</a>
+
+      <ul>
+        <li><a href="api/facts.html#draco.fact_utils.answer_set_to_dict">(in module draco.fact_utils)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
 <h2 id="B">B</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
@@ -252,18 +308,83 @@
   </ul></td>
 </tr></table>
 
+<h2 id="C">C</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/intro.html#draco.check_spec">check_spec() (in module draco)</a>
+
+      <ul>
+        <li><a href="api/spec.html#draco.spec.check_spec">(in module draco.spec)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/facts.html#draco.fact_utils.collect_children">collect_children() (in module draco.fact_utils)</a>
+</li>
+  </ul></td>
+</tr></table>
+
 <h2 id="D">D</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/intro.html#draco.dict_to_facts">dict_to_facts() (in module draco)</a>
+
+      <ul>
+        <li><a href="api/facts.html#draco.fact_utils.dict_to_facts">(in module draco.fact_utils)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
+      </ul></li>
       <li>
     draco
 
       <ul>
         <li><a href="api/intro.html#module-draco">module</a>
+</li>
+      </ul></li>
+      <li>
+    draco.fact_utils
+
+      <ul>
+        <li><a href="api/facts.html#module-draco.fact_utils">module</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    draco.run
+
+      <ul>
+        <li><a href="api/run.html#module-draco.run">module</a>
+</li>
+      </ul></li>
+      <li>
+    draco.spec
+
+      <ul>
+        <li><a href="api/spec.html#module-draco.spec">module</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="F">F</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/facts.html#draco.fact_utils.FactKind">FactKind (class in draco.fact_utils)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="G">G</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/facts.html#draco.fact_utils.get_value">get_value() (in module draco.fact_utils)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/intro.html#draco.get_violations">get_violations() (in module draco)</a>
+
+      <ul>
+        <li><a href="api/spec.html#draco.spec.get_violations">(in module draco.spec)</a>
 </li>
       </ul></li>
   </ul></td>
@@ -273,18 +394,32 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/intro.html#draco.is_satisfiable">is_satisfiable() (in module draco)</a>
+
+      <ul>
+        <li><a href="api/run.html#draco.run.is_satisfiable">(in module draco.run)</a>
 </li>
+      </ul></li>
   </ul></td>
 </tr></table>
 
 <h2 id="M">M</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/facts.html#draco.fact_utils.make_fact">make_fact() (in module draco.fact_utils)</a>
+</li>
+      <li><a href="api/run.html#draco.run.Model">Model (class in draco.run)</a>
+</li>
       <li>
     module
 
       <ul>
         <li><a href="api/intro.html#module-draco">draco</a>
+</li>
+        <li><a href="api/facts.html#module-draco.fact_utils">draco.fact_utils</a>
+</li>
+        <li><a href="api/run.html#module-draco.run">draco.run</a>
+</li>
+        <li><a href="api/spec.html#module-draco.spec">draco.spec</a>
 </li>
       </ul></li>
   </ul></td>
@@ -306,7 +441,11 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/intro.html#draco.run_clingo">run_clingo() (in module draco)</a>
+
+      <ul>
+        <li><a href="api/run.html#draco.run.run_clingo">(in module draco.run)</a>
 </li>
+      </ul></li>
   </ul></td>
 </tr></table>
 

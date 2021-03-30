@@ -26,7 +26,7 @@
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.37f24b989f4638ff9c27c22dc7559d4f.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e7340bb3dbd8dde6db86f25597f54a1b.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -54,7 +54,7 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Programs" href="programs.html" />
+    <link rel="next" title="Specifications" href="spec.html" />
     <link rel="prev" title="Overview" href="intro.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -105,22 +105,37 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../facts/schema.html">
-   Schema Description
+   Data and Schema
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../facts/view.html">
-   View Description
+   Views
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../facts/mark.html">
-   Mark Description
+   Marks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../facts/encoding.html">
+   Encodings
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../facts/scale.html">
+   Scales
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../facts/task.html">
-   Task Description
+   Tasks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../facts/examples.html">
+   Example Charts
   </a>
  </li>
 </ul>
@@ -138,6 +153,31 @@
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Read Data and Generate the Schema
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="#run-the-clingo-solver">
+   Run the Clingo Solver
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="#converting-satisfiable-models-back-into-views">
+   Converting Satisfiable Models back into Views
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="spec.html">
+   Specifications
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="run.html">
+   Run
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="facts.html">
+   Fact Utils
   </a>
  </li>
  <li class="toctree-l1">
@@ -258,18 +298,36 @@
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
         <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> Contents
+            <i class="fas fa-list"></i>
+            Contents
         </div>
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#available-functions">
-   Available functions
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Read Data and Generate the Schema
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#available-functions">
+     Available functions
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#usage-example">
+     Usage Example
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#run-the-clingo-solver">
+   Run the Clingo Solver
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#usage-example">
-   Usage Example
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#converting-satisfiable-models-back-into-views">
+   Converting Satisfiable Models back into Views
   </a>
  </li>
 </ul>
@@ -289,7 +347,7 @@
 <p>Here, we will cover how to load data and use inferred statistics in Draco.</p>
 <div class="section" id="available-functions">
 <h2>Available functions<a class="headerlink" href="#available-functions" title="Permalink to this headline">¶</a></h2>
-<p>The main functions allow you to get the schema from a Pandas dataframe or a file. These functions return a schema as a dictionary, which you can encode as Answer Set Programming facts using our generic <cite>dict_to_facts</cite> encoder.</p>
+<p>The main functions allow you to get the schema from a Pandas dataframe or a file. These functions return a schema as a dictionary, which you can encode as Answer Set Programming facts using our generic <code class="docutils literal notranslate"><span class="pre">dict_to_facts</span></code> encoder.</p>
 <dl class="py function">
 <dt id="draco.schema.schema_from_dataframe">
 <code class="sig-prename descclassname"><span class="pre">draco.schema.</span></code><code class="sig-name descname"><span class="pre">schema_from_dataframe</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">df</span></em>, <em class="sig-param"><span class="pre">parse_data_type=&lt;function</span> <span class="pre">dtype_to_field_type&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#draco.schema.schema_from_dataframe" title="Permalink to this definition">¶</a></dt>
@@ -338,6 +396,19 @@
 <h2>Usage Example<a class="headerlink" href="#usage-example" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">executable</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;/home/runner/.cache/pypoetry/virtualenvs/draco-2B3Fy6YM-py3.8/bin/python&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">draco</span> <span class="kn">import</span> <span class="n">schema_from_dataframe</span><span class="p">,</span> <span class="n">dict_to_facts</span>
 </pre></div>
 </div>
@@ -362,32 +433,32 @@
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;number_rows&#39;: 1461,
- &#39;field&#39;: [{&#39;__id__&#39;: &#39;date&#39;, &#39;data_type&#39;: &#39;datetime&#39;, &#39;unique&#39;: 1461},
-  {&#39;__id__&#39;: &#39;precipitation&#39;,
-   &#39;data_type&#39;: &#39;number&#39;,
+ &#39;field&#39;: [{&#39;name&#39;: &#39;date&#39;, &#39;type&#39;: &#39;datetime&#39;, &#39;unique&#39;: 1461},
+  {&#39;name&#39;: &#39;precipitation&#39;,
+   &#39;type&#39;: &#39;number&#39;,
    &#39;unique&#39;: 111,
    &#39;min&#39;: 0,
    &#39;max&#39;: 55,
    &#39;std&#39;: 6},
-  {&#39;__id__&#39;: &#39;temp_max&#39;,
-   &#39;data_type&#39;: &#39;number&#39;,
+  {&#39;name&#39;: &#39;temp_max&#39;,
+   &#39;type&#39;: &#39;number&#39;,
    &#39;unique&#39;: 67,
    &#39;min&#39;: -1,
    &#39;max&#39;: 35,
    &#39;std&#39;: 7},
-  {&#39;__id__&#39;: &#39;temp_min&#39;,
-   &#39;data_type&#39;: &#39;number&#39;,
+  {&#39;name&#39;: &#39;temp_min&#39;,
+   &#39;type&#39;: &#39;number&#39;,
    &#39;unique&#39;: 55,
    &#39;min&#39;: -7,
    &#39;max&#39;: 18,
    &#39;std&#39;: 5},
-  {&#39;__id__&#39;: &#39;wind&#39;,
-   &#39;data_type&#39;: &#39;number&#39;,
+  {&#39;name&#39;: &#39;wind&#39;,
+   &#39;type&#39;: &#39;number&#39;,
    &#39;unique&#39;: 79,
    &#39;min&#39;: 0,
    &#39;max&#39;: 9,
    &#39;std&#39;: 1},
-  {&#39;__id__&#39;: &#39;weather&#39;, &#39;data_type&#39;: &#39;string&#39;, &#39;unique&#39;: 5, &#39;freq&#39;: 714}]}
+  {&#39;name&#39;: &#39;weather&#39;, &#39;type&#39;: &#39;string&#39;, &#39;unique&#39;: 5, &#39;freq&#39;: 714}]}
 </pre></div>
 </div>
 </div>
@@ -395,49 +466,126 @@
 <p>We can then convert the schema dictionary into facts that Dracos constraint solver can use with <code class="docutils literal notranslate"><span class="pre">dict_to_facts</span></code>. The function returns a list of facts. The solver will be able to parse these facts and consider them in the recommendation process.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">program</span> <span class="o">=</span> <span class="n">dict_to_facts</span><span class="p">(</span><span class="n">schema</span><span class="p">)</span>
-<span class="nb">list</span><span class="p">(</span><span class="n">program</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dict_to_facts</span><span class="p">(</span><span class="n">schema</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;attribute(number_rows,root,1461).&#39;,
- &#39;property(field,root,date).&#39;,
- &#39;attribute(data_type,date,datetime).&#39;,
- &#39;attribute(unique,date,1461).&#39;,
- &#39;property(field,root,precipitation).&#39;,
- &#39;attribute(data_type,precipitation,number).&#39;,
- &#39;attribute(unique,precipitation,111).&#39;,
- &#39;attribute(min,precipitation,0).&#39;,
- &#39;attribute(max,precipitation,55).&#39;,
- &#39;attribute(std,precipitation,6).&#39;,
- &#39;property(field,root,temp_max).&#39;,
- &#39;attribute(data_type,temp_max,number).&#39;,
- &#39;attribute(unique,temp_max,67).&#39;,
- &#39;attribute(min,temp_max,-1).&#39;,
- &#39;attribute(max,temp_max,35).&#39;,
- &#39;attribute(std,temp_max,7).&#39;,
- &#39;property(field,root,temp_min).&#39;,
- &#39;attribute(data_type,temp_min,number).&#39;,
- &#39;attribute(unique,temp_min,55).&#39;,
- &#39;attribute(min,temp_min,-7).&#39;,
- &#39;attribute(max,temp_min,18).&#39;,
- &#39;attribute(std,temp_min,5).&#39;,
- &#39;property(field,root,wind).&#39;,
- &#39;attribute(data_type,wind,number).&#39;,
- &#39;attribute(unique,wind,79).&#39;,
- &#39;attribute(min,wind,0).&#39;,
- &#39;attribute(max,wind,9).&#39;,
- &#39;attribute(std,wind,1).&#39;,
- &#39;property(field,root,weather).&#39;,
- &#39;attribute(data_type,weather,string).&#39;,
- &#39;attribute(unique,weather,5).&#39;,
- &#39;attribute(freq,weather,714).&#39;]
+ &#39;property(field,root,0).&#39;,
+ &#39;attribute((field,name),0,date).&#39;,
+ &#39;attribute((field,type),0,datetime).&#39;,
+ &#39;attribute((field,unique),0,1461).&#39;,
+ &#39;property(field,root,1).&#39;,
+ &#39;attribute((field,name),1,precipitation).&#39;,
+ &#39;attribute((field,type),1,number).&#39;,
+ &#39;attribute((field,unique),1,111).&#39;,
+ &#39;attribute((field,min),1,0).&#39;,
+ &#39;attribute((field,max),1,55).&#39;,
+ &#39;attribute((field,std),1,6).&#39;,
+ &#39;property(field,root,2).&#39;,
+ &#39;attribute((field,name),2,temp_max).&#39;,
+ &#39;attribute((field,type),2,number).&#39;,
+ &#39;attribute((field,unique),2,67).&#39;,
+ &#39;attribute((field,min),2,-1).&#39;,
+ &#39;attribute((field,max),2,35).&#39;,
+ &#39;attribute((field,std),2,7).&#39;,
+ &#39;property(field,root,3).&#39;,
+ &#39;attribute((field,name),3,temp_min).&#39;,
+ &#39;attribute((field,type),3,number).&#39;,
+ &#39;attribute((field,unique),3,55).&#39;,
+ &#39;attribute((field,min),3,-7).&#39;,
+ &#39;attribute((field,max),3,18).&#39;,
+ &#39;attribute((field,std),3,5).&#39;,
+ &#39;property(field,root,4).&#39;,
+ &#39;attribute((field,name),4,wind).&#39;,
+ &#39;attribute((field,type),4,number).&#39;,
+ &#39;attribute((field,unique),4,79).&#39;,
+ &#39;attribute((field,min),4,0).&#39;,
+ &#39;attribute((field,max),4,9).&#39;,
+ &#39;attribute((field,std),4,1).&#39;,
+ &#39;property(field,root,5).&#39;,
+ &#39;attribute((field,name),5,weather).&#39;,
+ &#39;attribute((field,type),5,string).&#39;,
+ &#39;attribute((field,unique),5,5).&#39;,
+ &#39;attribute((field,freq),5,714).&#39;]
 </pre></div>
 </div>
 </div>
 </div>
+<p>This list of facts can direct be passed into Draco’s constraint solver - the Clingo Solver</p>
 </div>
+</div>
+<div class="section" id="run-the-clingo-solver">
+<h1>Run the Clingo Solver<a class="headerlink" href="#run-the-clingo-solver" title="Permalink to this headline">¶</a></h1>
+<p>The facts produced above act as constraints to the Clingo Solver. <code class="docutils literal notranslate"><span class="pre">run_clingo</span></code> calls the Clingo Solver on the program passed in and returns a list of models.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">draco</span> <span class="kn">import</span> <span class="n">run_clingo</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">program</span> <span class="o">=</span> <span class="n">dict_to_facts</span><span class="p">(</span><span class="n">schema</span><span class="p">)</span>
+<span class="n">models</span> <span class="o">=</span> <span class="n">run_clingo</span><span class="p">(</span><span class="n">program</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">models</span></code> stores a list of models that satisfy the constraints passed to <code class="docutils literal notranslate"><span class="pre">run_clingo</span></code></p>
+</div>
+<div class="section" id="converting-satisfiable-models-back-into-views">
+<h1>Converting Satisfiable Models back into Views<a class="headerlink" href="#converting-satisfiable-models-back-into-views" title="Permalink to this headline">¶</a></h1>
+<p>In order produce visualizations that satisfy the constraints, we must convert the answer sets of each model back to a nested data structure that resembles the schema. Models are objects of class <code class="docutils literal notranslate"><span class="pre">Model</span></code> which has members <code class="docutils literal notranslate"><span class="pre">answer_set</span></code> of type <code class="docutils literal notranslate"><span class="pre">clingo.Symbol</span></code>, <code class="docutils literal notranslate"><span class="pre">cost</span></code> of type of <code class="docutils literal notranslate"><span class="pre">int</span></code>, and <code class="docutils literal notranslate"><span class="pre">number</span></code> of type <code class="docutils literal notranslate"><span class="pre">int</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">draco</span> <span class="kn">import</span> <span class="n">answer_set_to_dict</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">views</span> <span class="o">=</span> <span class="p">[</span><span class="n">answer_set_to_dict</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">answer_set</span><span class="p">)</span> <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">models</span><span class="p">]</span>
+<span class="n">views</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;number_rows&#39;: 1461,
+  &#39;field&#39;: [{&#39;name&#39;: &#39;date&#39;, &#39;type&#39;: &#39;datetime&#39;, &#39;unique&#39;: 1461},
+   {&#39;name&#39;: &#39;precipitation&#39;,
+    &#39;type&#39;: &#39;number&#39;,
+    &#39;unique&#39;: 111,
+    &#39;min&#39;: 0,
+    &#39;max&#39;: 55,
+    &#39;std&#39;: 6},
+   {&#39;name&#39;: &#39;temp_max&#39;,
+    &#39;type&#39;: &#39;number&#39;,
+    &#39;unique&#39;: 67,
+    &#39;min&#39;: -1,
+    &#39;max&#39;: 35,
+    &#39;std&#39;: 7},
+   {&#39;name&#39;: &#39;temp_min&#39;,
+    &#39;type&#39;: &#39;number&#39;,
+    &#39;unique&#39;: 55,
+    &#39;min&#39;: -7,
+    &#39;max&#39;: 18,
+    &#39;std&#39;: 5},
+   {&#39;name&#39;: &#39;wind&#39;,
+    &#39;type&#39;: &#39;number&#39;,
+    &#39;unique&#39;: 79,
+    &#39;min&#39;: 0,
+    &#39;max&#39;: 9,
+    &#39;std&#39;: 1},
+   {&#39;name&#39;: &#39;weather&#39;, &#39;type&#39;: &#39;string&#39;, &#39;unique&#39;: 5, &#39;freq&#39;: 714}]}]
+</pre></div>
+</div>
+</div>
+</div>
+<p>In the example above, there is one satisfiable model which produces one nested data structure. This structure can be fed into visualization tools such as VegaLite to produce views.</p>
 </div>
 
     <script type="text/x-thebe-config">
@@ -466,7 +614,7 @@
         <div class='prev-next-bottom'>
             
     <a class='left-prev' id="prev-link" href="intro.html" title="previous page">Overview</a>
-    <a class='right-next' id="next-link" href="programs.html" title="next page">Programs</a>
+    <a class='right-next' id="next-link" href="spec.html" title="next page">Specifications</a>
 
         </div>
         

@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Schema Description &#8212; Draco</title>
+    <title>Data and Schema &#8212; Draco</title>
     
   <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -26,7 +26,7 @@
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.37f24b989f4638ff9c27c22dc7559d4f.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e7340bb3dbd8dde6db86f25597f54a1b.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -54,7 +54,7 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="View Description" href="view.html" />
+    <link rel="next" title="Views" href="view.html" />
     <link rel="prev" title="Overview" href="intro.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -105,22 +105,37 @@
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Schema Description
+   Data and Schema
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="view.html">
-   View Description
+   Views
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="mark.html">
-   Mark Description
+   Marks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="encoding.html">
+   Encodings
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="scale.html">
+   Scales
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="task.html">
-   Task Description
+   Tasks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="examples.html">
+   Example Charts
   </a>
  </li>
 </ul>
@@ -138,6 +153,31 @@
  <li class="toctree-l1">
   <a class="reference internal" href="../api/schema.html">
    Read Data and Generate the Schema
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../api/schema.html#run-the-clingo-solver">
+   Run the Clingo Solver
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../api/schema.html#converting-satisfiable-models-back-into-views">
+   Converting Satisfiable Models back into Views
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../api/spec.html">
+   Specifications
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../api/run.html">
+   Run
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../api/facts.html">
+   Fact Utils
   </a>
  </li>
  <li class="toctree-l1">
@@ -241,7 +281,8 @@
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
         <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> Contents
+            <i class="fas fa-list"></i>
+            Contents
         </div>
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
@@ -272,49 +313,52 @@
         
               <div>
                 
-  <div class="section" id="schema-description">
-<h1>Schema Description<a class="headerlink" href="#schema-description" title="Permalink to this headline">¶</a></h1>
-<p>The schema describes what we know about the dataset and the fields in the data. Besides general statistics about the whole dataset, the schema also has information about field types and field statistics.</p>
+  <div class="section" id="data-and-schema">
+<h1>Data and Schema<a class="headerlink" href="#data-and-schema" title="Permalink to this headline">¶</a></h1>
+<p>In Draco, you can describe what you know about the dataset and the fields in the data. There can be only one dataset in a Draco program.</p>
+<p>Besides general statistics about the whole dataset, the schema has information about field types and field statistics.</p>
+<p>You can use Draco’s <a class="reference internal" href="../api/schema.html"><span class="doc std std-doc">data schema API</span></a> to generate a schema description from a file or Pandas dataframe.</p>
 <div class="section" id="dataset-properties">
 <h2>Dataset Properties<a class="headerlink" href="#dataset-properties" title="Permalink to this headline">¶</a></h2>
+<p>General properties of the dataset that are not specific to a field are properties of the root.</p>
 <p><code class="docutils literal notranslate"><span class="pre">number_rows</span></code>
 : The number of rows in the dataset. Draco can use this fact about the data to recommend chart design that scale to the size of the dataset.</p>
 </div>
 <div class="section" id="field-properties">
 <h2>Field Properties<a class="headerlink" href="#field-properties" title="Permalink to this headline">¶</a></h2>
-<p>Draco can use information about the field type and field statistics. Each field property is associated with a field. The facts therefore have the form of e.g. <code class="docutils literal notranslate"><span class="pre">attribute(data_type,foo,number).</span></code> (read as <em>the type of the foo field is number</em>). For each field, there should be a property fact <code class="docutils literal notranslate"><span class="pre">property</span></code> that tells Draco that the field exists on the root object (e.g. <code class="docutils literal notranslate"><span class="pre">property(field,root,foo).</span></code>).</p>
-<p><code class="docutils literal notranslate"><span class="pre">data_type</span></code>
+<p>Draco can use information about the field type and field statistics. Each field property is associated with a field. The facts therefore have the form of e.g. <code class="docutils literal notranslate"><span class="pre">attribute((field,type),foo,number).</span></code> (read as <em>the type of the foo field is number</em>). For each field, there should be a property fact <code class="docutils literal notranslate"><span class="pre">property</span></code> that tells Draco that the field exists on the root object (e.g. <code class="docutils literal notranslate"><span class="pre">property(field,root,foo).</span></code>).</p>
+<p><code class="docutils literal notranslate"><span class="pre">(field,type)</span></code>
 : The type of the data in the column for this field. One of <code class="docutils literal notranslate"><span class="pre">number</span></code>, <code class="docutils literal notranslate"><span class="pre">string</span></code>, <code class="docutils literal notranslate"><span class="pre">boolean</span></code>, or <code class="docutils literal notranslate"><span class="pre">datetime</span></code>.</p>
-<p><code class="docutils literal notranslate"><span class="pre">unique</span></code>
+<p><code class="docutils literal notranslate"><span class="pre">(field,unique)</span></code>
 : The number of unique values.</p>
-<p><code class="docutils literal notranslate"><span class="pre">min</span></code>
+<p><code class="docutils literal notranslate"><span class="pre">(field,min)</span></code>
 : The minimum value. Only used for numbers.</p>
-<p><code class="docutils literal notranslate"><span class="pre">max</span></code>
+<p><code class="docutils literal notranslate"><span class="pre">(field,max)</span></code>
 : The maximum value. Only used for numbers.</p>
-<p><code class="docutils literal notranslate"><span class="pre">std</span></code>
+<p><code class="docutils literal notranslate"><span class="pre">(field,std)</span></code>
 : The standard deviation. Only used for numbers.</p>
-<p><code class="docutils literal notranslate"><span class="pre">freq</span></code>
+<p><code class="docutils literal notranslate"><span class="pre">(field,freq)</span></code>
 : The frequency of the most common value. Only used for strings.</p>
 </div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-prolog notranslate"><div class="highlight"><pre><span></span><span class="nf">fact</span><span class="p">(</span><span class="s s-Atom">number_rows</span><span class="p">,</span><span class="s s-Atom">root</span><span class="p">,</span><span class="mi">42</span><span class="p">).</span>
+<div class="highlight-prolog notranslate"><div class="highlight"><pre><span></span><span class="nf">attribute</span><span class="p">(</span><span class="s s-Atom">number_rows</span><span class="p">,</span><span class="s s-Atom">root</span><span class="p">,</span><span class="mi">42</span><span class="p">).</span>
 
 <span class="nf">property</span><span class="p">(</span><span class="s s-Atom">field</span><span class="p">,</span><span class="s s-Atom">root</span><span class="p">,</span><span class="s s-Atom">date</span><span class="p">).</span>
-<span class="nf">attribute</span><span class="p">(</span><span class="s s-Atom">data_type</span><span class="p">,</span><span class="s s-Atom">date</span><span class="p">,</span><span class="s s-Atom">datetime</span><span class="p">).</span>
-<span class="nf">attribute</span><span class="p">(</span><span class="s s-Atom">unique</span><span class="p">,</span><span class="s s-Atom">date</span><span class="p">,</span><span class="mi">1461</span><span class="p">).</span>
+<span class="nf">attribute</span><span class="p">((</span><span class="s s-Atom">field</span><span class="p">,</span><span class="s s-Atom">type</span><span class="p">),</span><span class="s s-Atom">date</span><span class="p">,</span><span class="s s-Atom">datetime</span><span class="p">).</span>
+<span class="nf">attribute</span><span class="p">((</span><span class="s s-Atom">field</span><span class="p">,</span><span class="s s-Atom">unique</span><span class="p">),</span><span class="s s-Atom">date</span><span class="p">,</span><span class="mi">1461</span><span class="p">).</span>
 
 <span class="nf">property</span><span class="p">(</span><span class="s s-Atom">field</span><span class="p">,</span><span class="s s-Atom">root</span><span class="p">,</span><span class="s s-Atom">precipitation</span><span class="p">).</span>
-<span class="nf">attribute</span><span class="p">(</span><span class="s s-Atom">data_type</span><span class="p">,</span><span class="s s-Atom">precipitation</span><span class="p">,</span><span class="s s-Atom">number</span><span class="p">).</span>
-<span class="nf">attribute</span><span class="p">(</span><span class="s s-Atom">unique</span><span class="p">,</span><span class="s s-Atom">precipitation</span><span class="p">,</span><span class="mi">111</span><span class="p">).</span>
-<span class="nf">attribute</span><span class="p">(</span><span class="s s-Atom">min</span><span class="p">,</span><span class="s s-Atom">precipitation</span><span class="p">,</span><span class="mi">0</span><span class="p">).</span>
-<span class="nf">attribute</span><span class="p">(</span><span class="s s-Atom">max</span><span class="p">,</span><span class="s s-Atom">precipitation</span><span class="p">,</span><span class="mi">55</span><span class="p">).</span>
-<span class="nf">attribute</span><span class="p">(</span><span class="s s-Atom">std</span><span class="p">,</span><span class="s s-Atom">precipitation</span><span class="p">,</span><span class="mi">6</span><span class="p">).</span>
+<span class="nf">attribute</span><span class="p">((</span><span class="s s-Atom">field</span><span class="p">,</span><span class="s s-Atom">type</span><span class="p">),</span><span class="s s-Atom">precipitation</span><span class="p">,</span><span class="s s-Atom">number</span><span class="p">).</span>
+<span class="nf">attribute</span><span class="p">((</span><span class="s s-Atom">field</span><span class="p">,</span><span class="s s-Atom">unique</span><span class="p">),</span><span class="s s-Atom">precipitation</span><span class="p">,</span><span class="mi">111</span><span class="p">).</span>
+<span class="nf">attribute</span><span class="p">((</span><span class="s s-Atom">field</span><span class="p">,</span><span class="s s-Atom">min</span><span class="p">),</span><span class="s s-Atom">precipitation</span><span class="p">,</span><span class="mi">0</span><span class="p">).</span>
+<span class="nf">attribute</span><span class="p">((</span><span class="s s-Atom">field</span><span class="p">,</span><span class="s s-Atom">max</span><span class="p">),</span><span class="s s-Atom">precipitation</span><span class="p">,</span><span class="mi">55</span><span class="p">).</span>
+<span class="nf">attribute</span><span class="p">((</span><span class="s s-Atom">field</span><span class="p">,</span><span class="s s-Atom">std</span><span class="p">),</span><span class="s s-Atom">precipitation</span><span class="p">,</span><span class="mi">6</span><span class="p">).</span>
 
 <span class="nf">property</span><span class="p">(</span><span class="s s-Atom">field</span><span class="p">,</span><span class="s s-Atom">root</span><span class="p">,</span><span class="s s-Atom">weather</span><span class="p">).</span>
-<span class="nf">attribute</span><span class="p">(</span><span class="s s-Atom">data_type</span><span class="p">,</span><span class="s s-Atom">weather</span><span class="p">,</span><span class="s s-Atom">string</span><span class="p">).</span>
-<span class="nf">attribute</span><span class="p">(</span><span class="s s-Atom">unique</span><span class="p">,</span><span class="s s-Atom">weather</span><span class="p">,</span><span class="mi">5</span><span class="p">).</span>
-<span class="nf">attribute</span><span class="p">(</span><span class="s s-Atom">freq</span><span class="p">,</span><span class="s s-Atom">weather</span><span class="p">,</span><span class="mi">714</span><span class="p">).</span>
+<span class="nf">attribute</span><span class="p">((</span><span class="s s-Atom">field</span><span class="p">,</span><span class="s s-Atom">type</span><span class="p">),</span><span class="s s-Atom">weather</span><span class="p">,</span><span class="s s-Atom">string</span><span class="p">).</span>
+<span class="nf">attribute</span><span class="p">((</span><span class="s s-Atom">field</span><span class="p">,</span><span class="s s-Atom">unique</span><span class="p">),</span><span class="s s-Atom">weather</span><span class="p">,</span><span class="mi">5</span><span class="p">).</span>
+<span class="nf">attribute</span><span class="p">((</span><span class="s s-Atom">field</span><span class="p">,</span><span class="s s-Atom">freq</span><span class="p">),</span><span class="s s-Atom">weather</span><span class="p">,</span><span class="mi">714</span><span class="p">).</span>
 </pre></div>
 </div>
 </div>
@@ -346,7 +390,7 @@
         <div class='prev-next-bottom'>
             
     <a class='left-prev' id="prev-link" href="intro.html" title="previous page">Overview</a>
-    <a class='right-next' id="next-link" href="view.html" title="next page">View Description</a>
+    <a class='right-next' id="next-link" href="view.html" title="next page">Views</a>
 
         </div>
         

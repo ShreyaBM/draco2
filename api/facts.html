@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Overview &#8212; Draco</title>
+    <title>Fact Utils &#8212; Draco</title>
     
   <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -54,8 +54,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Read Data and Generate the Schema" href="schema.html" />
-    <link rel="prev" title="Example Charts" href="../facts/examples.html" />
+    <link rel="next" title="Programs" href="programs.html" />
+    <link rel="prev" title="Run" href="run.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -145,8 +145,8 @@
  </span>
 </p>
 <ul class="current nav sidenav_l1">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
    Overview
   </a>
  </li>
@@ -175,8 +175,8 @@
    Run
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="facts.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Fact Utils
   </a>
  </li>
@@ -237,9 +237,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/api/intro.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/api/facts.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -257,10 +257,10 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/cmudig/draco2/issues/new?title=Issue%20on%20page%20%2Fapi/intro.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/cmudig/draco2/issues/new?title=Issue%20on%20page%20%2Fapi/facts.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/cmudig/draco2/edit/main/docs/api/intro.md"><button
+        <a class="edit-button" href="https://github.com/cmudig/draco2/edit/main/docs/api/facts.ipynb"><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
@@ -275,11 +275,48 @@
 
             <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/cmudig/draco2/main?urlpath=lab/tree/docs/api/facts.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
         </div>
 
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i>
+            Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#module-draco.fact_utils">
+   Available functions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#usage-example">
+   Usage Example
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
         </div>
     </div>
 </div>
@@ -288,12 +325,31 @@
         
               <div>
                 
-  <div class="section" id="overview">
-<h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h1>
-<p>Draco exposes the following methods.</p>
-<span class="target" id="module-draco"></span><dl class="py function">
-<dt id="draco.answer_set_to_dict">
-<code class="sig-prename descclassname"><span class="pre">draco.</span></code><code class="sig-name descname"><span class="pre">answer_set_to_dict</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">answer_set</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'root'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#draco.answer_set_to_dict" title="Permalink to this definition">¶</a></dt>
+  <div class="section" id="fact-utils">
+<h1>Fact Utils<a class="headerlink" href="#fact-utils" title="Permalink to this headline">¶</a></h1>
+<p>Generating facts in the expected format can be tedious. To make it easier to put data into and get data our of Draco, we an API to convert nested data to facts and vice versa.</p>
+<div class="section" id="module-draco.fact_utils">
+<span id="available-functions"></span><h2>Available functions<a class="headerlink" href="#module-draco.fact_utils" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="draco.fact_utils.FactKind">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">draco.fact_utils.</span></code><code class="sig-name descname"><span class="pre">FactKind</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#draco.fact_utils.FactKind" title="Permalink to this definition">¶</a></dt>
+<dd><p>The kind of ASP fact.
+Attributes:</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">PROPERTY</dt>
+<dd class="field-odd"><p>a nested property (“is a” relationship)</p>
+</dd>
+<dt class="field-even">ATTRIBUTE</dt>
+<dd class="field-even"><p>an attribute (value)</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py function">
+<dt id="draco.fact_utils.answer_set_to_dict">
+<code class="sig-prename descclassname"><span class="pre">draco.fact_utils.</span></code><code class="sig-name descname"><span class="pre">answer_set_to_dict</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">answer_set</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'root'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#draco.fact_utils.answer_set_to_dict" title="Permalink to this definition">¶</a></dt>
 <dd><p>A generic decoder that converts an answer set into a nested data structure.
 The inverse of this function is <code class="code docutils literal notranslate"><span class="pre">dict_to_facts</span></code>.</p>
 <dl class="field-list simple">
@@ -304,24 +360,14 @@ The inverse of this function is <code class="code docutils literal notranslate">
 </dd></dl>
 
 <dl class="py function">
-<dt id="draco.check_spec">
-<code class="sig-prename descclassname"><span class="pre">draco.</span></code><code class="sig-name descname"><span class="pre">check_spec</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spec</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#draco.check_spec" title="Permalink to this definition">¶</a></dt>
-<dd><p>Checks the spec against the hard constraints.</p>
-<p>Internally, Draco checks against the definitions, constraints, helpers,
-and hard constraints.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>spec</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Iterable</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]]) – The specification to check</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></p>
-</dd>
-</dl>
+<dt id="draco.fact_utils.collect_children">
+<code class="sig-prename descclassname"><span class="pre">draco.fact_utils.</span></code><code class="sig-name descname"><span class="pre">collect_children</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">collector</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#draco.fact_utils.collect_children" title="Permalink to this definition">¶</a></dt>
+<dd><p>Helper function to collect the children for a name into a dictionary.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="draco.dict_to_facts">
-<code class="sig-prename descclassname"><span class="pre">draco.</span></code><code class="sig-name descname"><span class="pre">dict_to_facts</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'root'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_generator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#draco.dict_to_facts" title="Permalink to this definition">¶</a></dt>
+<dt id="draco.fact_utils.dict_to_facts">
+<code class="sig-prename descclassname"><span class="pre">draco.fact_utils.</span></code><code class="sig-name descname"><span class="pre">dict_to_facts</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'root'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_generator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#draco.fact_utils.dict_to_facts" title="Permalink to this definition">¶</a></dt>
 <dd><p>A generic encoder for dictionaries as answer set programming facts.
 The encoder can convert dictionaries as well as lists (generating
 identifiers as numbers).
@@ -334,100 +380,83 @@ The inverse of this function is <code class="code docutils literal notranslate">
 </dd></dl>
 
 <dl class="py function">
-<dt id="draco.get_violations">
-<code class="sig-prename descclassname"><span class="pre">draco.</span></code><code class="sig-name descname"><span class="pre">get_violations</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spec</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#draco.get_violations" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get the list of violations for a given specification.</p>
-<p>Internally, Draco checks against the definitions, constraints, helpers,
-and hard constraints.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>spec</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Iterable</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]]) – The specification top check</p>
-</dd>
-</dl>
+<dt id="draco.fact_utils.get_value">
+<code class="sig-prename descclassname"><span class="pre">draco.fact_utils.</span></code><code class="sig-name descname"><span class="pre">get_value</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbol</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#draco.fact_utils.get_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the value of a Clingo symbol.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="draco.is_satisfiable">
-<code class="sig-prename descclassname"><span class="pre">draco.</span></code><code class="sig-name descname"><span class="pre">is_satisfiable</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">program</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#draco.is_satisfiable" title="Permalink to this definition">¶</a></dt>
-<dd><p>Checks whether the program is satisfiable</p>
+<dt id="draco.fact_utils.make_fact">
+<code class="sig-prename descclassname"><span class="pre">draco.fact_utils.</span></code><code class="sig-name descname"><span class="pre">make_fact</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kind</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">values</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">typing.List</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#draco.fact_utils.make_fact" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create an ASP fact from a list of values. The function generates either
+attribute or property facts.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>program</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Iterable</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]]) – Program as a string or iterable of strings that will be
-concatenated.</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></p>
-</dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>Whether the program is satisfiable.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt id="draco.run_clingo">
-<code class="sig-prename descclassname"><span class="pre">draco.</span></code><code class="sig-name descname"><span class="pre">run_clingo</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">program</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">models</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#draco.run_clingo" title="Permalink to this definition">¶</a></dt>
-<dd><p>Run the solver and yield the models.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>program</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Iterable</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]]) – Program as a string or iterable of strings that will be
-concatenated.</p></li>
-<li><p><strong>models</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – Number of models to generate, defaults to 0 (meaning all models)</p></li>
-</ul>
-</dd>
-<dt class="field-even">Yield</dt>
-<dd class="field-even"><p>The models.</p>
-</dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Generator</span></code>[<a class="reference internal" href="run.html#draco.run.Model" title="draco.run.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>]</p>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="py function">
-<dt id="draco.schema_from_dataframe">
-<code class="sig-prename descclassname"><span class="pre">draco.</span></code><code class="sig-name descname"><span class="pre">schema_from_dataframe</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">df</span></em>, <em class="sig-param"><span class="pre">parse_data_type=&lt;function</span> <span class="pre">dtype_to_field_type&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#draco.schema_from_dataframe" title="Permalink to this definition">¶</a></dt>
-<dd><p>Read schema information from the given Pandas dataframe.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>df</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code>) – DataFrame to generate schema for.</p></li>
-<li><p><strong>parse_data_type</strong> – Function to parse data types.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>]</p>
-</dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>A dictionary representing the schema.</p>
-</dd>
-</dl>
-</dd></dl>
+</div>
+<div class="section" id="usage-example">
+<h2>Usage Example<a class="headerlink" href="#usage-example" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">draco</span> <span class="kn">import</span> <span class="n">dict_to_facts</span><span class="p">,</span> <span class="n">answer_set_to_dict</span><span class="p">,</span> <span class="n">run_clingo</span>
+<span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">facts</span> <span class="o">=</span> <span class="n">dict_to_facts</span><span class="p">({</span>
+    <span class="s2">&quot;mark&quot;</span><span class="p">:</span> <span class="s2">&quot;bar&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;encoding&quot;</span><span class="p">:</span> <span class="p">[{</span>
+        <span class="s2">&quot;channel&quot;</span><span class="p">:</span> <span class="s2">&quot;x&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;condition&quot;</span>
+    <span class="p">},{</span>
+        <span class="s2">&quot;channel&quot;</span><span class="p">:</span> <span class="s2">&quot;y&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;aggregate&quot;</span><span class="p">:</span> <span class="s2">&quot;count&quot;</span>
+    <span class="p">}]</span>
+<span class="p">})</span>
+<span class="n">facts</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;attribute(mark,root,bar).&#39;,
+ &#39;property(encoding,root,0).&#39;,
+ &#39;attribute((encoding,channel),0,x).&#39;,
+ &#39;attribute((encoding,field),0,condition).&#39;,
+ &#39;property(encoding,root,1).&#39;,
+ &#39;attribute((encoding,channel),1,y).&#39;,
+ &#39;attribute((encoding,aggregate),1,count).&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># we can run Clingo and convert the model back into the nested representation</span>
 
-<dl class="py function">
-<dt id="draco.schema_from_file">
-<code class="sig-prename descclassname"><span class="pre">draco.</span></code><code class="sig-name descname"><span class="pre">schema_from_file</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">file_path</span></em>, <em class="sig-param"><span class="pre">parse_data_type=&lt;function</span> <span class="pre">dtype_to_field_type&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#draco.schema_from_file" title="Permalink to this definition">¶</a></dt>
-<dd><p>Read schema information from the given CSV or JSON file.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>file_path</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code>) – Path to CSV or JSON file.</p></li>
-<li><p><strong>parse_data_type</strong> – Function to parse data types.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Raises</dt>
-<dd class="field-even"><p><strong>ValueError</strong> – If the file has an unsupported data type.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>]</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>A dictionary representing the schema.</p>
-</dd>
-</dl>
-</dd></dl>
-
+<span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">run_clingo</span><span class="p">(</span><span class="n">facts</span><span class="p">):</span>
+    <span class="n">answer_set</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">answer_set</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">answer_set</span><span class="p">)</span>
+    <span class="n">pprint</span><span class="p">(</span><span class="n">answer_set_to_dict</span><span class="p">(</span><span class="n">answer_set</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;clingo.symbol.Symbol object at 0x7fddcfcf8910&gt;, &lt;clingo.symbol.Symbol object at 0x7fddcfcf8940&gt;, &lt;clingo.symbol.Symbol object at 0x7fddcfcf8700&gt;, &lt;clingo.symbol.Symbol object at 0x7fddcfcf8970&gt;, &lt;clingo.symbol.Symbol object at 0x7fddcfcf89a0&gt;, &lt;clingo.symbol.Symbol object at 0x7fddcfcf89d0&gt;, &lt;clingo.symbol.Symbol object at 0x7fddcfcf8a00&gt;]
+{&#39;encoding&#39;: [{&#39;channel&#39;: &#39;x&#39;, &#39;field&#39;: &#39;condition&#39;},
+              {&#39;aggregate&#39;: &#39;count&#39;, &#39;channel&#39;: &#39;y&#39;}],
+ &#39;mark&#39;: &#39;bar&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -455,8 +484,8 @@ concatenated.</p></li>
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="../facts/examples.html" title="previous page">Example Charts</a>
-    <a class='right-next' id="next-link" href="schema.html" title="next page">Read Data and Generate the Schema</a>
+    <a class='left-prev' id="prev-link" href="run.html" title="previous page">Run</a>
+    <a class='right-next' id="next-link" href="programs.html" title="next page">Programs</a>
 
         </div>
         

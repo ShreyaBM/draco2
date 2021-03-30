@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Programs &#8212; Draco</title>
+    <title>Run &#8212; Draco</title>
     
   <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -54,8 +54,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Bibliography" href="../bibliography.html" />
-    <link rel="prev" title="Fact Utils" href="facts.html" />
+    <link rel="next" title="Fact Utils" href="facts.html" />
+    <link rel="prev" title="Specifications" href="spec.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -170,8 +170,8 @@
    Specifications
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="run.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Run
   </a>
  </li>
@@ -180,8 +180,8 @@
    Fact Utils
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="programs.html">
    Programs
   </a>
  </li>
@@ -237,9 +237,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/api/programs.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/api/run.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -257,10 +257,10 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/cmudig/draco2/issues/new?title=Issue%20on%20page%20%2Fapi/programs.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/cmudig/draco2/issues/new?title=Issue%20on%20page%20%2Fapi/run.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/cmudig/draco2/edit/main/docs/api/programs.md"><button
+        <a class="edit-button" href="https://github.com/cmudig/draco2/edit/main/docs/api/run.ipynb"><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
@@ -275,6 +275,23 @@
 
             <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/cmudig/draco2/main?urlpath=lab/tree/docs/api/run.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
         </div>
 
         <!-- Table of contents -->
@@ -287,8 +304,13 @@
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#options-for-each-program">
-   Options for Each Program
+  <a class="reference internal nav-link" href="#module-draco.run">
+   Available functions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#usage-example">
+   Usage Example
   </a>
  </li>
 </ul>
@@ -303,68 +325,100 @@
         
               <div>
                 
-  <div class="section" id="programs">
-<h1>Programs<a class="headerlink" href="#programs" title="Permalink to this headline">¶</a></h1>
-<p>Draco exposes the following programs.</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">definitions</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">constraints</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">generate</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">hard</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">helpers</span></code></p></li>
+  <div class="section" id="run">
+<h1>Run<a class="headerlink" href="#run" title="Permalink to this headline">¶</a></h1>
+<p>Draco can run programs in the Clingo solver. <code class="docutils literal notranslate"><span class="pre">draco.run</span></code> exposes the low-level functions to run a program in the solver and get back the satisfying models with the answer sets.</p>
+<p>Draco uses these methods in the <a class="reference internal" href="spec.html"><span class="doc std std-doc">high-level APIs for checking specifications</span></a>. If you use this API, make sure to read the <a class="reference external" href="https://potassco.org/clingo/python-api/current/">documentation of the Clingo Python API</a>. It covers how to work with answer sets and symbols.</p>
+<div class="section" id="module-draco.run">
+<span id="available-functions"></span><h2>Available functions<a class="headerlink" href="#module-draco.run" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="draco.run.Model">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">draco.run.</span></code><code class="sig-name descname"><span class="pre">Model</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">answer_set</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cost</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#draco.run.Model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class for a model.</p>
+<dl class="simple">
+<dt>Attributes:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">answer_set</dt>
+<dd class="field-odd"><p>The answer set of this model.
+An answer set is a list of Clingo Symbols.</p>
+</dd>
+<dt class="field-even">cost</dt>
+<dd class="field-even"><p>The cost of this answer set.</p>
+</dd>
+<dt class="field-odd">number</dt>
+<dd class="field-odd"><p>The sequence number of this answer.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="draco.run.is_satisfiable">
+<code class="sig-prename descclassname"><span class="pre">draco.run.</span></code><code class="sig-name descname"><span class="pre">is_satisfiable</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">program</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#draco.run.is_satisfiable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks whether the program is satisfiable</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>program</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Iterable</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]]) – Program as a string or iterable of strings that will be
+concatenated.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Whether the program is satisfiable.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="draco.run.run_clingo">
+<code class="sig-prename descclassname"><span class="pre">draco.run.</span></code><code class="sig-name descname"><span class="pre">run_clingo</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">program</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">models</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#draco.run.run_clingo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the solver and yield the models.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>program</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Iterable</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]]) – Program as a string or iterable of strings that will be
+concatenated.</p></li>
+<li><p><strong>models</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – Number of models to generate, defaults to 0 (meaning all models)</p></li>
 </ul>
-<p>Draco loads these programs from files.</p>
-<div class="section" id="options-for-each-program">
-<h2>Options for Each Program<a class="headerlink" href="#options-for-each-program" title="Permalink to this headline">¶</a></h2>
-<dl class="py data">
-<dt id="draco.programs">
-<code class="sig-prename descclassname"><span class="pre">draco.</span></code><code class="sig-name descname"><span class="pre">programs</span></code><a class="headerlink" href="#draco.programs" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<p>Each program has both the program as well as the program as a dictionary of blocks. Blocks allow you to pick and choose parts of a program and access documentation.</p>
-<dl class="py class">
-<dt id="draco.programs.Program">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">draco.programs.</span></code><code class="sig-name descname"><span class="pre">Program</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">program</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">blocks</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#draco.programs.Program" title="Permalink to this definition">¶</a></dt>
-<dd><p>Class for an Answer Set Programming (ASP) program.</p>
-<dl class="simple">
-<dt>Attributes:</dt><dd><dl class="field-list simple">
-<dt class="field-odd">program</dt>
-<dd class="field-odd"><p>The complete program.</p>
 </dd>
-<dt class="field-even">blocks</dt>
-<dd class="field-even"><p>The blocks in the program.</p>
+<dt class="field-even">Yield</dt>
+<dd class="field-even"><p>The models.</p>
 </dd>
-</dl>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Generator</span></code>[<a class="reference internal" href="#draco.run.Model" title="draco.run.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>]</p>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="py attribute">
-<dt id="draco.asp_utils.Blocks">
-<code class="sig-prename descclassname"><span class="pre">draco.asp_utils.</span></code><code class="sig-name descname"><span class="pre">Blocks</span></code><a class="headerlink" href="#draco.asp_utils.Blocks" title="Permalink to this definition">¶</a></dt>
-<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>], <code class="xref py py-obj docutils literal notranslate"><span class="pre">Union</span></code>[<a class="reference internal" href="#draco.asp_utils.Block" title="draco.asp_utils.Block"><code class="xref py py-class docutils literal notranslate"><span class="pre">draco.asp_utils.Block</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]]</p>
-</dd></dl>
+</div>
+<div class="section" id="usage-example">
+<h2>Usage Example<a class="headerlink" href="#usage-example" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">draco</span> <span class="kn">import</span> <span class="n">run_clingo</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">run_clingo</span><span class="p">(</span><span class="s2">&quot;a. b :- a.&quot;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
 
-<dl class="py class">
-<dt id="draco.asp_utils.Block">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">draco.asp_utils.</span></code><code class="sig-name descname"><span class="pre">Block</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">block_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">program</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#draco.asp_utils.Block" title="Permalink to this definition">¶</a></dt>
-<dd><p>Class for a code block.</p>
-<dl class="simple">
-<dt>Attributes:</dt><dd><dl class="field-list simple">
-<dt class="field-odd">block_type</dt>
-<dd class="field-odd"><p>The type of code block.</p>
-</dd>
-<dt class="field-even">description</dt>
-<dd class="field-even"><p>Short description of the code block.</p>
-</dd>
-<dt class="field-odd">program</dt>
-<dd class="field-odd"><p>The program in Answer Set Programming (ASP).</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
+    <span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">answer_set</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">answer_set</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model(answer_set=[&lt;clingo.symbol.Symbol object at 0x7f0ee5f0a7c0&gt;, &lt;clingo.symbol.Symbol object at 0x7f0ee5f0a7f0&gt;], cost=[], number=1)
+a
+b
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 </div>
 
@@ -393,8 +447,8 @@
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="facts.html" title="previous page">Fact Utils</a>
-    <a class='right-next' id="next-link" href="../bibliography.html" title="next page">Bibliography</a>
+    <a class='left-prev' id="prev-link" href="spec.html" title="previous page">Specifications</a>
+    <a class='right-next' id="next-link" href="facts.html" title="next page">Fact Utils</a>
 
         </div>
         
